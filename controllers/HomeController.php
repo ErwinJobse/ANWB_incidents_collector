@@ -1,6 +1,8 @@
 <?php
 
-require_once 'models/IncidentsModel.php';
+define('__ROOT__', dirname(dirname(__FILE__)));
+
+require_once(__ROOT__.'/models/IncidentsModel.php');
 
 class HomeController {
     public function index() {
