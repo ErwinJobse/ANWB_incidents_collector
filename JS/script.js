@@ -1,32 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const updateTimeSelect = document.getElementById('updateTimeSelect');
+
+    let data;
+
+    const updateTimeSlider = document.getElementById('updateTimeSlider');
     const incidentsTable = document.getElementById('incidentsTable');
 
-    // Fetch data for the selector
+    // Fetch data for the slider
     fetch('http://localhost:63342/ANWB_incidents_collector/api/IncidentEndpoint.php?UpdateTime')
         .then(response => response.json())
-        .then(data => {
+        .then(apiData => {
             // Check if data is defined and has the expected properties
-            if (data && Array.isArray(data) && data) {
-                // Populate select menu
-                data.forEach(entry => {
-                    const option = document.createElement('option');
-                    option.value = entry.updatetime;
-                    option.textContent = entry.updatetime;
-                    updateTimeSelect.appendChild(option);
-                });
+            if (apiData && Array.isArray(apiData) && apiData) {
+                // Set max value for the slider based on the number of distinct times
+                updateTimeSlider.max = apiData.length - 1;
 
-                // Populate table with all incidents
-                populateTable(data);
-
-                // Fetch latest Incidents by default
+                // Load latest time
+                const defaultTimeIndex = 0;
                 const defaultTime = 'latest';
-                updateTimeSelect.value = defaultTime;
-                fetch(`../api/IncidentEndpoint.php?Incident=${defaultTime}`)
+                updateTimeSlider.value = defaultTimeIndex;
+                fetch(`http://localhost:63342/ANWB_incidents_collector/api/IncidentEndpoint.php?Incident=${defaultTime}`)
                     .then(response => response.json())
-                    .then(data => {
-                        if (data && Array.isArray(data)) {
-                            populateTable(data);
+                    .then(incidentsData => {
+                        if (incidentsData && Array.isArray(incidentsData)) {
+                            populateTable(incidentsData);
                         } else {
                             console.error('Invalid data format for incidents');
                         }
@@ -37,20 +33,25 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 console.error('Invalid data format');
             }
+            // Assign apiData to the global data variable
+            data = apiData;
         })
         .catch(error => {
             console.error('Error fetching data:', error);
         });
 
-    //Change table by change of select option
-    updateTimeSelect.addEventListener('change', function () {
-        const selectedTime = updateTimeSelect.value;
-        fetch(`../api/IncidentEndpoint.php?Incident=${selectedTime}`)
+
+    updateTimeSlider.addEventListener('input', function () {
+        const selectedTimeIndex = updateTimeSlider.value;
+        const selectedTime = data[selectedTimeIndex]["updatetime"];
+        //const selectedTime = data.value;
+        fetch(`http://localhost:63342/ANWB_incidents_collector/api/IncidentEndpoint.php?Incident=${selectedTime}`)
             .then(response => response.json())
-            .then(data => {
+            .then(incidentsData => {
                 // Check if data is defined and has the expected properties
-                if (data && Array.isArray(data)) {
-                    populateTable(data);
+                if (incidentsData && Array.isArray(incidentsData)) {
+                    populateTable(incidentsData);
+
                 } else {
                     console.error('Invalid data format for incidents');
                 }
@@ -78,4 +79,6 @@ document.addEventListener("DOMContentLoaded", function () {
             tableBody.appendChild(row);
         });
     }
+
+
 });

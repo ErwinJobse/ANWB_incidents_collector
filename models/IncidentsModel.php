@@ -26,7 +26,7 @@ class IncidentsModel
     public function getUpdateTimeList(): false|array
     {
         $DB = new DB();
-        return $DB->receiveData("SELECT DISTINCT updatetime FROM incidents GROUP BY updatetime;");
+        return $DB->receiveData("SELECT DISTINCT updatetime FROM incidents GROUP BY updatetime DESC;");
 
     }
 

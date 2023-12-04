@@ -16,10 +16,9 @@
 
 <h1>Incidents Table</h1>
 
-<label for="updateTimeSelect">Select UpdateTime:</label>
-<select id="updateTimeSelect">
-    <option value="latest">Latest</option>
-</select>
+
+<label for="updateTimeSlider">Change update time</label>
+<input type="range" id="updateTimeSlider" min="0" max="100" step="1" value="">
 
 <table id="incidentsTable">
     <thead>
