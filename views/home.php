@@ -24,21 +24,21 @@
 <table id="incidentsTable">
     <thead>
     <tr>
-        <th>IncidentNumber</th>
+        <th>Incident Number</th>
         <th>Road</th>
-        <th>FromPlace</th>
-        <th>ToPlace</th>
-        <th>FromCoordinatesLat</th>
-        <th>FromCoordinatesLon</th>
-        <th>ToCoordinatesLat</th>
-        <th>ToCoordinatesLon</th>
+        <th>From Place</th>
+        <th>To Place</th>
+        <th>From Coordinates  latitude</th>
+        <th>From Coordinates longitude</th>
+        <th>To Coordinates  latitude</th>
+        <th>To Coordinates longitude</th>
         <th>Reason</th>
-        <th>StartTime</th>
-        <th>StopTime</th>
+        <th>Start Time</th>
+        <th>Stop Time</th>
         <th>Delay in seconds</th>
-        <th>IncidentType</th>
+        <th>Incident Type</th>
         <th>Distance</th>
-        <th>UpdateTime</th>
+        <th>Update Time</th>
     </tr>
     </thead>
     <tbody></tbody>
