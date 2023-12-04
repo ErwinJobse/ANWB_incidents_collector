@@ -21,5 +21,6 @@ A solication assignment for Yoursurpice
 "*/5 * * * * /usr/bin/php /home/username/public_html/workers/IncidentCollector.php >/dev/null 2>&1"
 ```
 If it is just for testing you could open /workers/IncidentCollector.php with your browser to load new incidents info into the database 
+
 6. Load the table from /DB/incidents.sql into your database 
 7. You are ready to use the application by opening index.php in your browser. 
