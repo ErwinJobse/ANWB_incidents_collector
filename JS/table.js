@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const selectedTimeIndex = updateTimeSlider.value;
         const selectedTime = data[selectedTimeIndex]["updatetime"];
         //const selectedTime = data.value;
-        fetch(`http://localhost:63342/ANWB_incidents_collector/api/IncidentEndpoint.php?Incident=${selectedTime}`)
+        fetch(`../api/IncidentEndpoint.php?Incident=${selectedTime}`)
             .then(response => response.json())
             .then(incidentsData => {
                 // Check if data is defined and has the expected properties

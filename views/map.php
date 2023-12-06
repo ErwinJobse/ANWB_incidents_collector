@@ -4,16 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accident Routes Map</title>
-    <style>
-        #map {
-            height: 1500px;
-        }
-    </style>
 
-    <!-- Include Mapbox GL JS stylesheet -->
+    <!--  Mapbox GL JS  -->
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
 
+    <link href='../CSS/map.css' rel='stylesheet' />
 
 </head>
 <body>
@@ -23,7 +19,6 @@
 
 <div id="map"></div>
 
-
 <script>
         //$updatetime is used from controllers/Homecontroller.php
         var updateTime = <?= json_encode($updateTime, JSON_UNESCAPED_UNICODE); ?>;
@@ -31,7 +26,6 @@
 </script>
 
 <script src="../JS/map.js" defer></script>
-
 
 </body>
 </html>
