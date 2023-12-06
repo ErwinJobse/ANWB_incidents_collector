@@ -83,6 +83,24 @@ function addIncident(map, accident) {
         },
     });
 
+    // Set value to unknown if zero('s)
+    if(accident.Delay == "0"){
+        accident.Delay = "Unknown";
+    }
+    if(accident.Distance == "0"){
+        accident.Distance = "Unknown";
+    }
+    if(accident.StartTime == "0000-00-00 00:00:00"){
+        accident.StartTime = "Unknown";
+    }
+    if(accident.StopTime == "0000-00-00 00:00:00"){
+        accident.StopTime = "Unknown";
+    }
+
+
+
+
+
     addMarker(map, startCoordinates, accident.Reason, accident.IncidentType, accident.Distance, accident.StartTime, accident.StopTime, accident.FromPlace, accident.ToPlace, accident.Delay, routeColor);
     // addMarker(map, endCoordinates, accident.Reason, accident.IncidentNumber);
 

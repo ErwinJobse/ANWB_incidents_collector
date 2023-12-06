@@ -8,32 +8,39 @@ header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $IncidentController = new IncidentController();
-
-    // Get incident by updateTime
+    //Get incident by updateTime
     if (isset($_GET['Incident'])) {
-        $specificUpdateTime = $_GET['Incident'];
-        $result = $IncidentController->getIncidentByUpdateTime($specificUpdateTime);
 
-        // If no specific incident found, get the latest incidents
-        if ($result === null) {
+        $specificUpdateTime = $_GET['Incident'];
+        $Incidents = $IncidentController->getIncidentByUpdateTime($specificUpdateTime);
+        if (!$Incidents == NULL) {
+            $result = $Incidents;
+
+            //Get Latest incidents if not specified
+        } else {
+
             $result = $IncidentController->getLastIncidents();
         }
-    }
-    // Get list of update times
-    elseif (isset($_GET['UpdateTime'])) {
+        //Get list of update times
+    } elseif (isset($_GET['UpdateTime'])) {
+
         $result = $IncidentController->getUpdateTimeList();
-    }
-    // Get latest incidents
-    elseif (isset($_GET['latest'])) {
+
+
+        //Get latest incidents
+    } elseif (isset($_GET['latest'])) {
+
         $result = $IncidentController->getLastIncidents();
-    }
-    // No valid query parameter provided
-    else {
+
+    } else {
         $result = null;
     }
+
 }
 
-// Return results
+//Return results
 echo(json_encode($result));
 
+
 ?>
+

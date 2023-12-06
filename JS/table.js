@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var mapLink = document.getElementById("mapLink");
 
     // Fetch data for the slider
-    fetch('http://localhost:63342/ANWB_incidents_collector/api/IncidentEndpoint.php?UpdateTime')
+    fetch('../api/IncidentEndpoint.php?UpdateTime')
         .then(response => response.json())
         .then(apiData => {
             // Check if data is defined and has the expected properties
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const defaultTimeIndex = 0;
                 const defaultTime = 'latest';
                 updateTimeSlider.value = defaultTimeIndex;
-                fetch(`http://localhost:63342/ANWB_incidents_collector/api/IncidentEndpoint.php?Incident=${defaultTime}`)
+                fetch(`../api/IncidentEndpoint.php?Incident=${defaultTime}`)
                     .then(response => response.json())
                     .then(incidentsData => {
                         if (incidentsData && Array.isArray(incidentsData)) {
