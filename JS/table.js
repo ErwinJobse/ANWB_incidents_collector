@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const updateTimeSlider = document.getElementById('updateTimeSlider');
     const incidentsTable = document.getElementById('incidentsTable');
 
+    var mapLink = document.getElementById("mapLink");
+
     // Fetch data for the slider
     fetch('http://localhost:63342/ANWB_incidents_collector/api/IncidentEndpoint.php?UpdateTime')
         .then(response => response.json())
@@ -50,6 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(incidentsData => {
                 // Check if data is defined and has the expected properties
                 if (incidentsData && Array.isArray(incidentsData)) {
+
+                    //change link to map to current table
+                    mapLink.href = "index.php?map=" + selectedTime;
                     populateTable(incidentsData);
 
                 } else {

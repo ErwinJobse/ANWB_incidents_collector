@@ -12,4 +12,15 @@ class HomeController
 
         require_once 'views/home.php';
     }
+
+    //Load map
+    public function map($updateTime): void
+    {
+        //$updateTime is being used in views/map.php
+        $IncidentsModel = new IncidentsModel();
+
+        require_once 'views/map.php';
+    }
+
+
 }

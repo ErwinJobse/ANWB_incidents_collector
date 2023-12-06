@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 03, 2023 at 07:57 PM
+-- Generation Time: Dec 06, 2023 at 08:27 PM
 -- Server version: 10.6.12-MariaDB-0ubuntu0.22.04.1
 -- PHP Version: 8.2.13
 
@@ -29,21 +29,26 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `incidents` (
   `IncidentNumber` int(11) NOT NULL,
-  `Road` varchar(200) DEFAULT NULL,
-  `FromPlace` varchar(200) DEFAULT NULL,
-  `ToPlace` varchar(200) DEFAULT NULL,
+  `Road` varchar(100) DEFAULT NULL,
+  `FromPlace` varchar(100) DEFAULT NULL,
+  `ToPlace` varchar(100) DEFAULT NULL,
   `FromCoordinatesLat` float DEFAULT NULL,
-  `FromCoordinatesLon` float NOT NULL,
+  `FromCoordinatesLon` float DEFAULT NULL,
   `ToCoordinatesLat` float DEFAULT NULL,
   `ToCoordinatesLon` float DEFAULT NULL,
-  `Reason` varchar(200) DEFAULT NULL,
+  `Reason` varchar(100) DEFAULT NULL,
   `StartTime` datetime DEFAULT NULL,
   `StopTime` datetime DEFAULT NULL,
   `Delay` int(10) DEFAULT NULL,
   `IncidentType` varchar(100) DEFAULT NULL,
   `Distance` int(10) DEFAULT NULL,
-  `UpdateTime` datetime DEFAULT NULL
+  `UpdateTime` datetime DEFAULT NULL,
+  `Polyline` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Indexes for dumped tables
+--
 
 --
 -- Indexes for table `incidents`
@@ -59,7 +64,7 @@ ALTER TABLE `incidents`
 -- AUTO_INCREMENT for table `incidents`
 --
 ALTER TABLE `incidents`
-  MODIFY `IncidentNumber` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7550;
+  MODIFY `IncidentNumber` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9010;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

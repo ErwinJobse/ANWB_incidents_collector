@@ -8,11 +8,18 @@ require_once(__ROOT__ . '/models/DatabaseModel.php');
 class IncidentsModel
 {
     //Add new incident
-    public function addIncident($Road, $FromPlace, $ToPlace, $FromCoordinatesLat, $FromCoordinatesLon, $ToCoordinatesLat, $ToCoordinatesLon, $Reason, $StartTime, $StopTime, $Delay, $IncidentType, $Distance, $UpdateTime)
+    public function addIncident($Road, $FromPlace, $ToPlace, $FromCoordinatesLat, $FromCoordinatesLon, $ToCoordinatesLat, $ToCoordinatesLon, $Reason, $StartTime, $StopTime, $Delay, $IncidentType, $Distance, $UpdateTime, $PolyLine)
     {
         $DB = new DB();
-        $DB->insertData("INSERT INTO incidents (Road, FromPlace, ToPlace, FromCoordinatesLat, FromCoordinatesLon,ToCoordinatesLat, ToCoordinatesLon, Reason, StartTime, StopTime, Delay, IncidentType, Distance, UpdateTime) 
-        VALUES ('" . $Road . "','" . $FromPlace . "','" . $ToPlace . "','" . $FromCoordinatesLat . "','" . $FromCoordinatesLon . "','" . $ToCoordinatesLat . "','" . $ToCoordinatesLon . "','" . $Reason . "','" . $StartTime . "','" . $StopTime . "','" . $Delay . "','" . $IncidentType . "','" . $Distance . "','" . $UpdateTime . "')");
+        $query = "INSERT INTO incidents (Road, FromPlace, ToPlace, FromCoordinatesLat, FromCoordinatesLon, ToCoordinatesLat, ToCoordinatesLon, Reason, StartTime, StopTime, Delay, IncidentType, Distance, UpdateTime, Polyline) 
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        $params = [
+            $Road, $FromPlace, $ToPlace, $FromCoordinatesLat, $FromCoordinatesLon, $ToCoordinatesLat, $ToCoordinatesLon, $Reason, $StartTime, $StopTime, $Delay, $IncidentType, $Distance, $UpdateTime, $PolyLine
+        ];
+
+        $DB->insertData($query, $params);
+
     }
     // Get incident by update time
     public function getIncidentByUpdateTime($UpdateTime): false|array

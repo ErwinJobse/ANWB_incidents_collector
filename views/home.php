@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Incidents collector overview</title>
 
-    <link rel="stylesheet" href="../CSS/style.css">
-    <script src="../JS/script.js"></script>
+    <link rel="stylesheet" href="../CSS/table.css">
+    <script src="../JS/table.js"></script>
 </head>
 <body>
 <h1>ANWB incidents collector</h1>
 <p>Overview</p>
 
+
+<a id="mapLink" href="index.php?map=latest">View on map</a>
 
 <h1>Incidents Table</h1>
 
@@ -38,6 +40,7 @@
         <th>Incident Type</th>
         <th>Distance</th>
         <th>Update Time</th>
+        <th>Polyline</th>
     </tr>
     </thead>
     <tbody></tbody>

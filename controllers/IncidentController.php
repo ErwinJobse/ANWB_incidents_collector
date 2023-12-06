@@ -8,7 +8,7 @@ require_once(__ROOT__ . '/models/IncidentsModel.php');
 class IncidentController
 {
     //Add Incident and
-    public function addIncident($Road, $FromPlace, $ToPlace, $FromCoordinatesLat, $FromCoordinatesLon, $ToCoordinatesLat, $ToCoordinatesLon, $Reason, $StartTime, $StopTime, $Delay, $IncidentType, $Distance, $UpdateTime): void
+    public function addIncident($Road, $FromPlace, $ToPlace, $FromCoordinatesLat, $FromCoordinatesLon, $ToCoordinatesLat, $ToCoordinatesLon, $Reason, $StartTime, $StopTime, $Delay, $IncidentType, $Distance, $UpdateTime, $Polyline): void
     {
         $IncidentModel = new IncidentsModel();
 
@@ -41,7 +41,8 @@ class IncidentController
             htmlspecialchars($Delay),
             htmlspecialchars($IncidentType),
             htmlspecialchars($Distance),
-            htmlspecialchars($UpdateTime));
+            htmlspecialchars($UpdateTime),
+            htmlspecialchars($Polyline));
     }
 
     public function getIncidentByUpdateTime($UpdateTime): array

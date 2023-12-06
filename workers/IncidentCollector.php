@@ -51,7 +51,8 @@ class IncidentCollector
                             $jam["delay"],
                             "jam",
                             $jam["distance"],
-                            $updateTime);
+                            $updateTime,
+                            $jam["polyline"]);
                     }
                 }
 
@@ -72,7 +73,8 @@ class IncidentCollector
                             $roadwork["delay"],
                             "roadworks",
                             $roadwork["distance"],
-                            $updateTime);
+                            $updateTime,
+                            $roadwork["polyline"]);
                     }
                 }
             }
