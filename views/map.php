@@ -10,7 +10,7 @@
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
 
     <link href='../CSS/map.css' rel='stylesheet' />
-
+    
 </head>
 <body>
 

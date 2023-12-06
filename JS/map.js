@@ -127,7 +127,7 @@ function polylineToCoordinates(polyline) {
 
     while (index < polyline.length) {
         let shift = 0;
-        let result = 0x20;
+        let result = 10;
         let byte;
 
         do {
