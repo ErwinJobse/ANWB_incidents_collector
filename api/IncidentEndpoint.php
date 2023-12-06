@@ -7,38 +7,33 @@ require_once(__ROOT__ . '/controllers/IncidentController.php');
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    //Get incident by updateTime
+    $IncidentController = new IncidentController();
+
+    // Get incident by updateTime
     if (isset($_GET['Incident'])) {
-        $IncidentController = new IncidentController();
         $specificUpdateTime = $_GET['Incident'];
-        $Incidents = $IncidentController->getIncidentByUpdateTime($specificUpdateTime);
-        if (!$Incidents == NULL) {
-            $result = $Incidents;
-            //Get Latest incidents if not specified
-        } else {
-            $IncidentController = new IncidentController();
+        $result = $IncidentController->getIncidentByUpdateTime($specificUpdateTime);
+
+        // If no specific incident found, get the latest incidents
+        if ($result === null) {
             $result = $IncidentController->getLastIncidents();
         }
-        //Get list of update times
-    } elseif (isset($_GET['UpdateTime'])) {
-        $IncidentController = new IncidentController();
+    }
+    // Get list of update times
+    elseif (isset($_GET['UpdateTime'])) {
         $result = $IncidentController->getUpdateTimeList();
-
-
-        //Get latest incidents
-    } elseif (isset($_GET['latest'])) {
-        $IncidentController = new IncidentController();
+    }
+    // Get latest incidents
+    elseif (isset($_GET['latest'])) {
         $result = $IncidentController->getLastIncidents();
-
-    } else {
+    }
+    // No valid query parameter provided
+    else {
         $result = null;
     }
-
 }
 
-
+// Return results
 echo(json_encode($result));
 
-
 ?>
-
