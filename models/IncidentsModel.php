@@ -3,8 +3,6 @@ define('__ROOT__', dirname(dirname(__FILE__)));
 
 require_once(__ROOT__ . '/models/DatabaseModel.php');
 
-
-
 class IncidentsModel
 {
     //Add new incident
@@ -25,23 +23,34 @@ class IncidentsModel
     public function getIncidentByUpdateTime($UpdateTime): false|array
     {
         $DB = new DB();
-        return $DB->receiveData("SELECT * FROM incidents WHERE UpdateTime = '" . $UpdateTime . "';");
+        $query = "SELECT * FROM incidents WHERE UpdateTime = ?";
+        $params = [$UpdateTime];
 
+        return $DB->receiveData($query, $params);
     }
 
     // GET array list with update times of the incident data
     public function getUpdateTimeList(): false|array
     {
         $DB = new DB();
-        return $DB->receiveData("SELECT DISTINCT updatetime FROM incidents GROUP BY updatetime DESC;");
+        $query = "SELECT DISTINCT updatetime FROM incidents GROUP BY updatetime DESC";
 
+        return $DB->receiveData($query);
     }
 
     // GET the latest update time
-    public function getLastUpdateTime(): string
+    public function getLastUpdateTime(): string|null
     {
         $DB = new DB();
-        return( $DB->receiveData("SELECT UpdateTime FROM incidents ORDER BY IncidentNumber DESC LIMIT 1 ")[0]["UpdateTime"]);
+        $query = "SELECT UpdateTime FROM incidents ORDER BY IncidentNumber DESC LIMIT 1";
+
+        $result = $DB->receiveData($query);
+
+        if (!empty($result)) {
+            return $result[0]["UpdateTime"];
+        } else {
+            return null;
+        }
     }
 
 }
