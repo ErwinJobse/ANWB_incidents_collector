@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accident Routes Map</title>
 
-    <!--  Mapbox GL JS  -->
+    <!--  Mapbox GL  -->
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet'/>
 
     <link href='../CSS/map.css' rel='stylesheet'/>
