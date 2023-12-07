@@ -46,7 +46,6 @@ class IncidentControllerTest extends TestCase
             "polyline" => 'SamplePolyline',
         ];
 
-        // Call the addIncident method on IncidentController with the array
         $incidentController->addIncident(
             $jam["road"],
             $jam["from"],
