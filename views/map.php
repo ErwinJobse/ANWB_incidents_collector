@@ -26,6 +26,12 @@
 
 <script src="../JS/map.js" defer></script>
 
+<P>
+    Red = Jam <br>
+    Blue = current roadworks <br>
+    grey = roadworks in the past of future
+</P>
+
 </body>
 </html>
 

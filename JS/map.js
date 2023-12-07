@@ -49,7 +49,10 @@ function addIncident(map, accident) {
     //Set route color
     var routeColor = "grey"
     if (accident.IncidentType === "roadworks") {
-        routeColor = "blue";
+        if(isDateBetweenNow(accident.StartTime, accident.StopTime)){
+            routeColor = "blue";
+        }
+
     } else if (accident.IncidentType === "jam") {
         routeColor = "red"
     }
@@ -151,3 +154,16 @@ function polylineToCoordinates(polyline) {
 
     return coords.slice(0, coordIndex);
 }
+
+function isDateBetweenNow(startDateStr, endDateStr) {
+    // Convert date strings to Date objects
+    const startDate = new Date(startDateStr);
+    const endDate = new Date(endDateStr);
+
+    // Get the current date and time
+    const now = new Date();
+
+    // Check if the current date is between the start and end dates
+    return now >= startDate && now <= endDate;
+}
+
