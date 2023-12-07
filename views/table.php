@@ -10,14 +10,10 @@
 </head>
 <body>
 <h1>ANWB incidents collector</h1>
-<p>Overview</p>
-
 
 <a id="mapLink" href="index.php?map=latest">View on map</a>
 
-
 <h1>Incidents Table</h1>
-
 
 <label for="updateTimeSlider">Change update time</label>
 <input type="range" id="updateTimeSlider" min="0" max="100" step="1" value="">
