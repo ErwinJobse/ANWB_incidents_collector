@@ -7,6 +7,7 @@ require_once(__ROOT__ . '/models/IncidentsModel.php');
 
 class IncidentController
 {
+
     //Add new Incident
     public function addIncident($Road, $FromPlace, $ToPlace, $FromCoordinatesLat, $FromCoordinatesLon, $ToCoordinatesLat, $ToCoordinatesLon, $Reason, $StartTime, $StopTime, $Delay, $IncidentType, $Distance, $UpdateTime, $Polyline): void
     {

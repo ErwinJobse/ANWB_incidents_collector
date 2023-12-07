@@ -107,7 +107,7 @@ function addMarker(map, coordinates, reason, incidentType, distance, startTime, 
         color: color
     })
         .setLngLat(coordinates)
-        .setPopup(new mapboxgl.Popup().setHTML(`<p>Reason: ${reason}</p><p>Incident Type: ${incidentType}</p><p>Distance: ${distance}</p><p>Start Time: ${startTime}</p><p>Stop Time: ${stopTime}</p><p>Start Location: ${fromPlace}</p><p>Stop Location: ${toPlace}</p><p>Delay: ${delay} Seconds</p>`))
+        .setPopup(new mapboxgl.Popup().setHTML(`<p>Reason: ${reason}</p><p>Incident Type: ${incidentType}</p><p>Distance: ${distance} Meter</p><p>Start Time: ${startTime}</p><p>Stop Time: ${stopTime}</p><p>Start Location: ${fromPlace}</p><p>Stop Location: ${toPlace}</p><p>Delay: ${delay} Seconds</p>`))
         .addTo(map);
 }
 
