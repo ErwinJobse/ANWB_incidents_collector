@@ -6,11 +6,11 @@ require_once(__ROOT__ . '/models/IncidentsModel.php');
 
 class HomeController
 {
-    public function index(): void
+    public function table(): void
     {
         $IncidentsModel = new IncidentsModel();
 
-        require_once 'views/home.php';
+        require_once 'views/table.php';
     }
 
     //Load map

@@ -6,11 +6,10 @@
     <title>Accident Routes Map</title>
 
     <!--  Mapbox GL JS  -->
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet'/>
 
-    <link href='../CSS/map.css' rel='stylesheet' />
-    
+    <link href='../CSS/map.css' rel='stylesheet'/>
+
 </head>
 <body>
 
@@ -20,8 +19,8 @@
 <div id="map"></div>
 
 <script>
-        //$updatetime is used from controllers/Homecontroller.php
-        var updateTime = <?= json_encode($updateTime, JSON_UNESCAPED_UNICODE); ?>;
+    //$updatetime is used from controllers/Homecontroller.php
+    var updateTime = <?= json_encode($updateTime, JSON_UNESCAPED_UNICODE); ?>;
 
 </script>
 

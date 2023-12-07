@@ -100,7 +100,6 @@ class IncidentCollector
 }
 
 
-
 $IncidentCollector = new IncidentCollector();
 $IncidentCollector->update();
 

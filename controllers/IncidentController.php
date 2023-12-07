@@ -7,7 +7,7 @@ require_once(__ROOT__ . '/models/IncidentsModel.php');
 
 class IncidentController
 {
-    //Add Incident and
+    //Add new Incident
     public function addIncident($Road, $FromPlace, $ToPlace, $FromCoordinatesLat, $FromCoordinatesLon, $ToCoordinatesLat, $ToCoordinatesLon, $Reason, $StartTime, $StopTime, $Delay, $IncidentType, $Distance, $UpdateTime, $Polyline): void
     {
         $IncidentModel = new IncidentsModel();
@@ -45,11 +45,12 @@ class IncidentController
             htmlspecialchars($Polyline));
     }
 
+    // Get Incident by update time
     public function getIncidentByUpdateTime($UpdateTime): array
     {
         $IncidentModel = new IncidentsModel;
 
-        if(!$UpdateTime == "") {
+        if (!$UpdateTime == "") {
 
             return ($IncidentModel->getIncidentByUpdateTime($UpdateTime));
         }
@@ -58,21 +59,22 @@ class IncidentController
 
     }
 
-    public function getUpdateTimeList(): array
-    {
-        $IncidentModel = new IncidentsModel();
-
-        return($IncidentModel->getUpdateTimeList());
-
-    }
-
+    // Get the latest Incidents
     public function getLastIncidents(): array
     {
 
         $IncidentModel = new IncidentsModel();
-        return($this->getIncidentByUpdateTime($IncidentModel->getLastUpdateTime()));
+        return ($this->getIncidentByUpdateTime($IncidentModel->getLastUpdateTime()));
 
 
+    }
+
+    // GET the latest update time
+    public function getUpdateTimeList(): array
+    {
+        $IncidentModel = new IncidentsModel();
+
+        return ($IncidentModel->getUpdateTimeList());
 
     }
 

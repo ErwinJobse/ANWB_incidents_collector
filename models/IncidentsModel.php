@@ -19,6 +19,7 @@ class IncidentsModel
         $DB->insertData($query, $params);
 
     }
+
     // Get incident by update time
     public function getIncidentByUpdateTime($UpdateTime): false|array
     {

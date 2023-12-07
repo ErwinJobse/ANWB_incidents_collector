@@ -1,4 +1,3 @@
-
 const mapboxAccessToken = 'pk.eyJ1IjoiZXJ3aW5qb2JzZSIsImEiOiJjbHBzZ2txZjEwMDlhMm1vZjlkZXMwdGJwIn0.a0JcUee6KujPOuj_B5fDqw';
 
 
@@ -45,13 +44,13 @@ function initializeMap() {
 
 function addIncident(map, accident) {
     const startCoordinates = [accident.FromCoordinatesLon, accident.FromCoordinatesLat];
-    const endCoordinates = [accident.ToCoordinatesLon, accident.ToCoordinatesLat];
+    //const endCoordinates = [accident.ToCoordinatesLon, accident.ToCoordinatesLat];
 
     //Set route color
     var routeColor = "grey"
-    if(accident.IncidentType === "roadworks"){
+    if (accident.IncidentType === "roadworks") {
         routeColor = "blue";
-    } else if(accident.IncidentType === "jam"){
+    } else if (accident.IncidentType === "jam") {
         routeColor = "red"
     }
 
@@ -84,32 +83,28 @@ function addIncident(map, accident) {
     });
 
     // Set value to unknown if zero('s)
-    if(accident.Delay == "0"){
+    if (accident.Delay == "0") {
         accident.Delay = "Unknown";
     }
-    if(accident.Distance == "0"){
+    if (accident.Distance == "0") {
         accident.Distance = "Unknown";
     }
-    if(accident.StartTime == "0000-00-00 00:00:00"){
+    if (accident.StartTime == "0000-00-00 00:00:00") {
         accident.StartTime = "Unknown";
     }
-    if(accident.StopTime == "0000-00-00 00:00:00"){
+    if (accident.StopTime == "0000-00-00 00:00:00") {
         accident.StopTime = "Unknown";
     }
 
 
-
-
-
     addMarker(map, startCoordinates, accident.Reason, accident.IncidentType, accident.Distance, accident.StartTime, accident.StopTime, accident.FromPlace, accident.ToPlace, accident.Delay, routeColor);
-    // addMarker(map, endCoordinates, accident.Reason, accident.IncidentNumber);
 
 }
 
 // Function to add a marker to the map
 function addMarker(map, coordinates, reason, incidentType, distance, startTime, stopTime, fromPlace, toPlace, delay, color) {
     new mapboxgl.Marker({
-        color:  color
+        color: color
     })
         .setLngLat(coordinates)
         .setPopup(new mapboxgl.Popup().setHTML(`<p>Reason: ${reason}</p><p>Incident Type: ${incidentType}</p><p>Distance: ${distance}</p><p>Start Time: ${startTime}</p><p>Stop Time: ${stopTime}</p><p>Start Location: ${fromPlace}</p><p>Stop Location: ${toPlace}</p><p>Delay: ${delay} Seconds</p>`))

@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(apiData => {
             // Check if data is defined and has the expected properties
-            if (apiData && Array.isArray(apiData) && apiData) {
+            if (apiData && Array.isArray(apiData)) {
                 // Set max value for the slider based on the number of distinct times
                 updateTimeSlider.max = apiData.length - 1;
 
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updateTimeSlider.addEventListener('input', function () {
         const selectedTimeIndex = updateTimeSlider.value;
         const selectedTime = data[selectedTimeIndex]["updatetime"];
-        //const selectedTime = data.value;
+
         fetch(`../api/IncidentEndpoint.php?Incident=${selectedTime}`)
             .then(response => response.json())
             .then(incidentsData => {

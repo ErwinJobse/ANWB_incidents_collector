@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,9 +28,9 @@
         <th>Road</th>
         <th>From Place</th>
         <th>To Place</th>
-        <th>From Coordinates  latitude</th>
+        <th>From Coordinates latitude</th>
         <th>From Coordinates longitude</th>
-        <th>To Coordinates  latitude</th>
+        <th>To Coordinates latitude</th>
         <th>To Coordinates longitude</th>
         <th>Reason</th>
         <th>Start Time</th>
