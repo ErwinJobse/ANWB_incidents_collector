@@ -8,6 +8,7 @@ A solication assignment for Yoursurpice
 * MariaDB
 * PHP cURL
 * Mapbox
+* PHPunit 10
 
 ## How to use
 
