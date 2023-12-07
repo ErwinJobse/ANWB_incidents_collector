@@ -57,6 +57,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     mapLink.href = "index.php?map=" + selectedTime;
                     populateTable(incidentsData);
 
+                    //change view of selected time
+                    document.getElementById('updateTimeView').innerHTML = selectedTime;
+
                 } else {
                     console.error('Invalid data format for incidents');
                 }
@@ -70,6 +73,9 @@ document.addEventListener("DOMContentLoaded", function () {
     function populateTable(incidents) {
         const tableBody = incidentsTable.querySelector('tbody');
         tableBody.innerHTML = ''; // Clear existing rows
+
+        // set view of updated time
+        document.getElementById('updateTimeView').innerHTML = incidents[0].UpdateTime;
 
         incidents.forEach(incident => {
             const row = document.createElement('tr');
