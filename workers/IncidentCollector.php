@@ -29,7 +29,8 @@ class IncidentCollector
         $IncidentController = new IncidentController();
 
         // GET current time
-        $updateTime = date('Y-m-d h-i-s', time());
+        date_default_timezone_set($timeZone);
+        $updateTime = date('Y-m-d H-i-s', time());
 
         foreach ($incidents["roads"] as $road) {
             foreach ($road["segments"] as $segment) {
