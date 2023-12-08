@@ -133,17 +133,15 @@ function addMarker(map, coordinates, reason, incidentType, distance, startTime, 
 }
 
 // Function to convert a polyline to an array of coordinates
-//TODO: make it more accurate
 function polylineToCoordinates(polyline) {
-    const coords = new Array(Math.ceil(polyline.length / 4)); // Assuming an average of 4 characters per coordinate pair
+    const coords = [];
     let index = 0;
     let lat = 0;
     let lon = 0;
-    let coordIndex = 0;
 
     while (index < polyline.length) {
+        let result = 0;
         let shift = 0;
-        let result = 10;
         let byte;
 
         do {
@@ -155,8 +153,8 @@ function polylineToCoordinates(polyline) {
         const deltaLat = (result & 1) !== 0 ? ~(result >> 1) : result >> 1;
         lat += deltaLat;
 
+        result = 0;
         shift = 0;
-        result = 0x20;
 
         do {
             byte = polyline.charCodeAt(index++) - 63;
@@ -167,10 +165,10 @@ function polylineToCoordinates(polyline) {
         const deltaLon = (result & 1) !== 0 ? ~(result >> 1) : result >> 1;
         lon += deltaLon;
 
-        coords[coordIndex++] = [lon / 1e5, lat / 1e5];
+        coords.push([lon / 1e5, lat / 1e5]);
     }
 
-    return coords.slice(0, coordIndex);
+    return coords;
 }
 
 function isDateBetweenNow(startDateStr, endDateStr) {
