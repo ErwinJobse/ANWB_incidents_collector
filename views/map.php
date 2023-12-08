@@ -27,9 +27,12 @@
 <script src="../JS/map.js" defer></script>
 
 <P>
-    Red = Jam <br>
-    Blue = current roadworks <br>
-    grey = roadworks in the past or future
+    Yellow = Jam, less than 300 second <br>
+    orange = Jam, Between 300 and 600 seconds<br>
+    Red = Jam, Langer dan 600 seconds <br>
+    Blue = Current roadworks <br>
+    light grey = Roadworks in the past or future
+    Dark grey = Something else
 </P>
 
 </body>

@@ -49,12 +49,30 @@ function addIncident(map, accident) {
     //Set route color
     var routeColor = "grey"
     if (accident.IncidentType === "roadworks") {
-        if(isDateBetweenNow(accident.StartTime, accident.StopTime)){
+        if (isDateBetweenNow(accident.StartTime, accident.StopTime)) {
             routeColor = "blue";
+        } else{
+            // If the roadworks are not now
+            routeColor = "#f2f2f2"
         }
 
     } else if (accident.IncidentType === "jam") {
-        routeColor = "red"
+        if (accident.Delay <= 300) {
+            // Adjust the amount of yellow based on the value of accident.Delay
+            const percentage = accident.Delay / 100;
+            const yellowAmount = Math.min(1, Math.max(0, percentage));
+
+            routeColor = `rgba(255, ${Math.round(255 * yellowAmount)}, 0, 1)`;
+        } else if (accident.Delay > 300 && accident.Delay <= 600) {
+
+            // Adjust the amount of red based on the value of accident.Delay
+            const percentage = (accident.Delay - 300) / (600 - 300);
+            const redAmount = Math.min(1, Math.max(0, percentage));
+
+            routeColor = `rgba(${Math.round(255 * redAmount * 255)}, ${Math.round(255 * (1 - redAmount))}, 0, 1)`;
+        } else {
+            routeColor = "red";
+        }
     }
 
     // Convert the polyline to a GeoJSON LineString
