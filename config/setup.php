@@ -7,4 +7,5 @@ $datebaseUsername = "username";
 $datebasePassword = "password";
 $anwbApiKey = "";
 $host = "localhost";
+$timeZone = "CET";
 
