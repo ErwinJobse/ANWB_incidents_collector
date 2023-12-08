@@ -31,7 +31,7 @@
     orange = Jam, Between 300 and 600 seconds<br>
     Red = Jam, Langer dan 600 seconds <br>
     Blue = Current roadworks <br>
-    light grey = Roadworks in the past or future
+    light grey = Roadworks in the past or future <br>
     Dark grey = Something else
 </P>
 
