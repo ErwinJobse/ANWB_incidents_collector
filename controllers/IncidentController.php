@@ -9,7 +9,27 @@ require_once(__ROOT__ . '/models/IncidentsModel.php');
 
 class IncidentController
 {
-    // Add new Incident
+    /**
+     * Add new Incident
+     *
+     * @param string|null $road
+     * @param string|null $fromPlace
+     * @param string|null $toPlace
+     * @param float|null  $fromCoordinatesLat
+     * @param float|null  $fromCoordinatesLon
+     * @param float|null  $toCoordinatesLat
+     * @param float|null  $toCoordinatesLon
+     * @param string|null $reason
+     * @param string|null $startTime
+     * @param string|null $stopTime
+     * @param int|null    $delay
+     * @param string|null $incidentType
+     * @param float|null  $distance
+     * @param string|null $updateTime
+     * @param string|null $polyline
+     *
+     * @return void
+     */
     public function addIncident(
         ?string $road,
         ?string $fromPlace,
@@ -55,7 +75,13 @@ class IncidentController
         );
     }
 
-    // Get Incident by update time
+    /**
+     * Get Incident by update time
+     *
+     * @param string $updateTime
+     *
+     * @return array
+     */
     public function getIncidentByUpdateTime(string $updateTime): array
     {
         $incidentModel = new IncidentsModel();
@@ -67,14 +93,22 @@ class IncidentController
         return $this->getLastIncidents();
     }
 
-    // Get the latest Incidents
+    /**
+     * Get the latest Incidents
+     *
+     * @return array
+     */
     public function getLastIncidents(): array
     {
         $incidentModel = new IncidentsModel();
         return $this->getIncidentByUpdateTime($incidentModel->getLastUpdateTime());
     }
 
-    // Get the latest update time
+    /**
+     * Get the latest update time.
+     *
+     * @return array
+     */
     public function getUpdateTimeList(): array
     {
         $incidentModel = new IncidentsModel();

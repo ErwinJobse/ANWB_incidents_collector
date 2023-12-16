@@ -15,10 +15,11 @@ class DB
     private $dbUser;
     private $dbPassword;
 
-    // Connect to database
+    // Connect to the database
     public $error = "";
     private $pdo = null;
     private $stmt = null;
+
 
     function __construct()
     {
@@ -32,7 +33,7 @@ class DB
         $this->connect();
     }
 
-    // Connect to database
+    // Connect to the database
     private function connect()
     {
         try {
@@ -51,7 +52,7 @@ class DB
         }
     }
 
-    // Close connection
+    // Close the connection
     function __destruct()
     {
         if ($this->stmt !== null) {
@@ -62,7 +63,14 @@ class DB
         }
     }
 
-    // receive data query
+    /**
+     * Receive data query.
+     *
+     * @param string $sql The SQL query to execute
+     * @param array|null $data The data to bind to the query
+     *
+     * @return false|array Returns the result set as an associative array.
+     */
     function receiveData(string $sql, array $data = null): false|array
     {
         $this->stmt = $this->pdo->prepare($sql);
@@ -70,8 +78,15 @@ class DB
         return $this->stmt->fetchAll();
     }
 
-    // insert data query
-    function insertData(string $sql, array $data = null): void
+    /**
+     * Insert data query.
+     *
+     * @param string $sql The SQL query to execute
+     * @param array $data  The data to bind to the query
+     *
+     * @return void
+     */
+    function insertData(string $sql, array $data): void
     {
         $this->stmt = $this->pdo->prepare($sql);
         $this->stmt->execute($data);

@@ -8,7 +8,27 @@ require_once(__ROOT__ . '/models/DatabaseModel.php');
 
 class IncidentsModel
 {
-    // Add new incident
+    /**
+     * Add new incident.
+     *
+     * @param string $road
+     * @param string $fromPlace
+     * @param string $toPlace
+     * @param float  $fromCoordinatesLat
+     * @param float  $fromCoordinatesLon
+     * @param float  $toCoordinatesLat
+     * @param float  $toCoordinatesLon
+     * @param string $reason
+     * @param string $startTime
+     * @param string $stopTime
+     * @param int    $delay
+     * @param string $incidentType
+     * @param float  $distance
+     * @param string $updateTime
+     * @param string $polyLine
+     *
+     * @return void
+     */
     public function addIncident(
         string $road,
         string $fromPlace,
@@ -51,7 +71,13 @@ class IncidentsModel
         $DB->insertData($query, $params);
     }
 
-    // Get incident by update time
+    /**
+     * Get incident by update time
+     *
+     * @param string $updateTime
+     *
+     * @return false|array
+     */
     public function getIncidentByUpdateTime(string $updateTime): false|array
     {
         $DB = new DB();
@@ -61,7 +87,11 @@ class IncidentsModel
         return $DB->receiveData($query, $params);
     }
 
-    // Get array list with update times of the incident data
+    /**
+     * Get array list with update times of the incident data
+     *
+     * @return false|array
+     */
     public function getUpdateTimeList(): false|array
     {
         $DB = new DB();
@@ -70,7 +100,11 @@ class IncidentsModel
         return $DB->receiveData($query);
     }
 
-    // Get the latest update time
+    /**
+     * Get the latest update time
+     *
+     * @return string|null
+     */
     public function getLastUpdateTime(): string|null
     {
         $DB = new DB();

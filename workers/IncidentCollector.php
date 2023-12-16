@@ -9,7 +9,11 @@ require_once(__ROOT__ . '/controllers/IncidentController.php');
 
 class IncidentCollector
 {
-    // Adds new incidents
+    /**
+     * Adds new incidents
+     *
+     * @return void
+     */
     function update()
     {
         include(__ROOT__ . '/config/setup.php');
@@ -83,7 +87,13 @@ class IncidentCollector
         }
     }
 
-    //Converts the date and time to a format that fits in the database
+    /**
+     * Converts the date and time to a format that fits in the database
+     *
+     * @param string $time The date and time to convert.
+     *
+     * @return string|null Returns the formatted date and time or null if empty
+     */
     private function convertTimeFormat($time)
     {
         //checks if not empty
@@ -93,12 +103,10 @@ class IncidentCollector
 
             return $formattedDateTime;
 
-
         } else {
             return NULL;
         }
     }
-
 }
 
 
