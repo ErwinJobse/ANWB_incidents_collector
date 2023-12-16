@@ -1,4 +1,4 @@
-/config/setup.php
+config/setup.php
 /.idea
 phpunit
 .phpunit.result.cache
