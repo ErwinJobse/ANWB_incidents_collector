@@ -36,7 +36,7 @@ CREATE TABLE `incidents` (
   `FromCoordinatesLon` float DEFAULT NULL,
   `ToCoordinatesLat` float DEFAULT NULL,
   `ToCoordinatesLon` float DEFAULT NULL,
-  `Reason` varchar(100) DEFAULT NULL,
+  `Reason` varchar(200) DEFAULT NULL,
   `StartTime` datetime DEFAULT NULL,
   `StopTime` datetime DEFAULT NULL,
   `Delay` int(10) DEFAULT NULL,
