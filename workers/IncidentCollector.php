@@ -38,46 +38,45 @@ class IncidentCollector
             foreach ($road["segments"] as $segment) {
                 if (array_key_exists("jams", $segment)) {
                     foreach ($segment["jams"] as $jam) {
-
-
                         $IncidentController->addIncident(
-                            $jam["road"],
-                            $jam["from"],
-                            $jam["to"],
-                            $jam["fromLoc"]["lat"],
-                            $jam["fromLoc"]["lon"],
-                            $jam["toLoc"]["lat"],
-                            $jam["toLoc"]["lon"],
-                            $jam["reason"],
-                            $this->convertTimeFormat($jam["start"]),
-                            $this->convertTimeFormat($jam["stop"]),
-                            $jam["delay"],
+                            $jam["road"] ?? null,
+                            $jam["from"] ?? null,
+                            $jam["to"] ?? null,
+                            $jam["fromLoc"]["lat"] ?? null,
+                            $jam["fromLoc"]["lon"] ?? null,
+                            $jam["toLoc"]["lat"] ?? null,
+                            $jam["toLoc"]["lon"] ?? null,
+                            $jam["reason"] ?? null,
+                            $this->convertTimeFormat($jam["start"] ?? null),
+                            $this->convertTimeFormat($jam["stop"] ?? null),
+                            $jam["delay"] ?? null,
                             "jam",
-                            $jam["distance"],
-                            $updateTime,
-                            $jam["polyline"]);
+                            $jam["distance"] ?? null,
+                            $updateTime ?? null,
+                            $jam["polyline"] ?? null
+                        );
                     }
                 }
 
                 if (array_key_exists("roadworks", $segment)) {
                     foreach ($segment["roadworks"] as $roadwork) {
                         $IncidentController->addIncident(
-
-                            $roadwork["road"],
-                            $roadwork["from"],
-                            $roadwork["to"],
-                            $roadwork["fromLoc"]["lat"],
-                            $roadwork["fromLoc"]["lon"],
-                            $roadwork["toLoc"]["lat"],
-                            $roadwork["toLoc"]["lon"],
-                            $roadwork["reason"],
-                            $this->convertTimeFormat($roadwork["start"]),
-                            $this->convertTimeFormat($roadwork["stop"]),
-                            $roadwork["delay"],
+                            $roadwork["road"] ?? null,
+                            $roadwork["from"] ?? null,
+                            $roadwork["to"] ?? null,
+                            $roadwork["fromLoc"]["lat"] ?? null,
+                            $roadwork["fromLoc"]["lon"] ?? null,
+                            $roadwork["toLoc"]["lat"] ?? null,
+                            $roadwork["toLoc"]["lon"] ?? null,
+                            $roadwork["reason"] ?? null,
+                            $this->convertTimeFormat($roadwork["start"] ?? null),
+                            $this->convertTimeFormat($roadwork["stop"] ?? null),
+                            $roadwork["delay"] ?? null,
                             "roadworks",
-                            $roadwork["distance"],
-                            $updateTime,
-                            $roadwork["polyline"]);
+                            $roadwork["distance"] ?? null,
+                            $updateTime ?? null,
+                            $roadwork["polyline"] ?? null
+                        );
                     }
                 }
             }
