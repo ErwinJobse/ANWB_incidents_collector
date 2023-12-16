@@ -6,6 +6,12 @@ require_once(__ROOT__ . '/config/setup.php');
 
 class DB
 {
+    // Database configuration
+    private $dbHost;
+    private $dbName;
+    private $dbCharset;
+    private $dbUser;
+    private $dbPassword;
 
     // Connect to database
     public $error = "";
@@ -14,6 +20,13 @@ class DB
 
     function __construct()
     {
+        // Set database configuration from external setup
+        $this->dbHost = $GLOBALS['databaseHost'];
+        $this->dbName = $GLOBALS['databaseName'];
+        $this->dbCharset = $GLOBALS['databaseCharset'];
+        $this->dbUser = $GLOBALS['datebaseUsername'];
+        $this->dbPassword = $GLOBALS['datebasePassword'];
+
         $this->connect();
     }
 
@@ -22,12 +35,14 @@ class DB
     {
         try {
             $this->pdo = new PDO(
-                "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET,
-                DB_USER, DB_PASSWORD, [
+                "mysql:host=" . $this->dbHost . ";dbname=" . $this->dbName . ";charset=" . $this->dbCharset,
+                $this->dbUser,
+                $this->dbPassword,
+                [
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                    PDO::ATTR_EMULATE_PREPARES, false]
-
+                    PDO::ATTR_EMULATE_PREPARES => false
+                ]
             );
         } catch (PDOException $e) {
             die("Connection failed: " . $e->getMessage());
@@ -59,15 +74,4 @@ class DB
         $this->stmt = $this->pdo->prepare($sql);
         $this->stmt->execute($data);
     }
-
-
 }
-
-define("DB_HOST", $databaseHost);
-define("DB_NAME", $databaseName);
-define("DB_CHARSET", $databaseCharset);
-define("DB_USER", $datebaseUsername);
-define("DB_PASSWORD", $datebasePassword);
-
-
-
