@@ -6,7 +6,7 @@
     <title>Accident Routes Map</title>
 
     <!--  Mapbox GL  -->
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet'/>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css' rel='stylesheet'/>
 
     <link href='../CSS/map.css' rel='stylesheet'/>
 

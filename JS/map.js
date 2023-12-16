@@ -7,7 +7,7 @@ apiEndpoint = '../api/IncidentEndpoint.php?Incident=' + updateTime;
 if (typeof mapboxgl === 'undefined') {
     // Load Mapbox GL JS script
     const script = document.createElement('script');
-    script.src = 'https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js';
+    script.src = 'https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js';
     script.onload = initializeMap;
     document.head.appendChild(script);
 } else {
