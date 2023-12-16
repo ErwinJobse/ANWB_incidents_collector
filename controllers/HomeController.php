@@ -16,7 +16,7 @@ class HomeController
     }
 
     //Load map
-    public function map($updateTime): void
+    public function map(string $updateTime): void
     {
         //$updateTime is being used in views/map.php
         $IncidentsModel = new IncidentsModel();

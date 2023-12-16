@@ -9,77 +9,75 @@ require_once(__ROOT__ . '/models/IncidentsModel.php');
 
 class IncidentController
 {
+    // Add new Incident
+    public function addIncident(
+        ?string $road,
+        ?string $fromPlace,
+        ?string $toPlace,
+        ?float $fromCoordinatesLat,
+        ?float $fromCoordinatesLon,
+        ?float $toCoordinatesLat,
+        ?float $toCoordinatesLon,
+        ?string $reason,
+        ?string $startTime,
+        ?string $stopTime,
+        ?int $delay,
+        ?string $incidentType,
+        ?float $distance,
+        ?string $updateTime,
+        ?string $polyline
+    ): void {
+        $incidentModel = new IncidentsModel();
 
-    //Add new Incident
-    public function addIncident($Road, $FromPlace, $ToPlace, $FromCoordinatesLat, $FromCoordinatesLon, $ToCoordinatesLat, $ToCoordinatesLon, $Reason, $StartTime, $StopTime, $Delay, $IncidentType, $Distance, $UpdateTime, $Polyline): void
-    {
-        $IncidentModel = new IncidentsModel();
+        // Set default values if parameters are empty
+        $delay = $delay ?? 0;
+        $startTime = $startTime ?? "0000-00-0 00:00:00";
+        $stopTime = $stopTime ?? "0000-00-0 00:00:00";
+        $distance = $distance ?? 0;
 
-        //Set value to zero('s) if is empty
-        if (($Delay == "")) {
-            $Delay = "0";
-        }
-        if (($StartTime == "")) {
-            $StartTime = "0000-00-0 00:00:00";
-        }
-        if (($StopTime == "")) {
-            $StopTime = "0000-00-0 00:00:00";
-        }
-        if (($Distance == "")) {
-            $Distance = "0";
-        }
-
-        //sanitize input
-        $IncidentModel->
-        addIncident(htmlspecialchars($Road),
-            htmlspecialchars($FromPlace),
-            htmlspecialchars($ToPlace),
-            htmlspecialchars($FromCoordinatesLat),
-            htmlspecialchars($FromCoordinatesLon),
-            htmlspecialchars($ToCoordinatesLat),
-            htmlspecialchars($ToCoordinatesLon),
-            htmlspecialchars($Reason),
-            htmlspecialchars($StartTime),
-            htmlspecialchars($StopTime),
-            htmlspecialchars($Delay),
-            htmlspecialchars($IncidentType),
-            htmlspecialchars($Distance),
-            htmlspecialchars($UpdateTime),
-            htmlspecialchars($Polyline));
+        // Sanitize input
+        $incidentModel->addIncident(
+            htmlspecialchars($road),
+            htmlspecialchars($fromPlace),
+            htmlspecialchars($toPlace),
+            htmlspecialchars($fromCoordinatesLat),
+            htmlspecialchars($fromCoordinatesLon),
+            htmlspecialchars($toCoordinatesLat),
+            htmlspecialchars($toCoordinatesLon),
+            htmlspecialchars($reason),
+            htmlspecialchars($startTime),
+            htmlspecialchars($stopTime),
+            htmlspecialchars($delay),
+            htmlspecialchars($incidentType),
+            htmlspecialchars($distance),
+            htmlspecialchars($updateTime),
+            htmlspecialchars($polyline)
+        );
     }
 
     // Get Incident by update time
-    public function getIncidentByUpdateTime($UpdateTime): array
+    public function getIncidentByUpdateTime(string $updateTime): array
     {
-        $IncidentModel = new IncidentsModel;
+        $incidentModel = new IncidentsModel();
 
-        if (!$UpdateTime == "") {
-
-            return ($IncidentModel->getIncidentByUpdateTime($UpdateTime));
+        if (!empty($updateTime)) {
+            return $incidentModel->getIncidentByUpdateTime(htmlspecialchars($updateTime));
         }
 
         return $this->getLastIncidents();
-
     }
 
     // Get the latest Incidents
     public function getLastIncidents(): array
     {
-
-        $IncidentModel = new IncidentsModel();
-        return ($this->getIncidentByUpdateTime($IncidentModel->getLastUpdateTime()));
-
-
+        $incidentModel = new IncidentsModel();
+        return $this->getIncidentByUpdateTime($incidentModel->getLastUpdateTime());
     }
 
-    // GET the latest update time
+    // Get the latest update time
     public function getUpdateTimeList(): array
     {
-        $IncidentModel = new IncidentsModel();
-
-        return ($IncidentModel->getUpdateTimeList());
-
+        $incidentModel = new IncidentsModel();
+        return $incidentModel->getUpdateTimeList();
     }
-
-
 }

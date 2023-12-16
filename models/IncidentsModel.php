@@ -8,32 +8,60 @@ require_once(__ROOT__ . '/models/DatabaseModel.php');
 
 class IncidentsModel
 {
-    //Add new incident
-    public function addIncident($Road, $FromPlace, $ToPlace, $FromCoordinatesLat, $FromCoordinatesLon, $ToCoordinatesLat, $ToCoordinatesLon, $Reason, $StartTime, $StopTime, $Delay, $IncidentType, $Distance, $UpdateTime, $PolyLine)
-    {
+    // Add new incident
+    public function addIncident(
+        string $road,
+        string $fromPlace,
+        string $toPlace,
+        float $fromCoordinatesLat,
+        float $fromCoordinatesLon,
+        float $toCoordinatesLat,
+        float $toCoordinatesLon,
+        string $reason,
+        string $startTime,
+        string $stopTime,
+        int $delay,
+        string $incidentType,
+        float $distance,
+        string $updateTime,
+        string $polyLine
+    ): void {
         $DB = new DB();
         $query = "INSERT INTO incidents (Road, FromPlace, ToPlace, FromCoordinatesLat, FromCoordinatesLon, ToCoordinatesLat, ToCoordinatesLon, Reason, StartTime, StopTime, Delay, IncidentType, Distance, UpdateTime, Polyline) 
               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $params = [
-            $Road, $FromPlace, $ToPlace, $FromCoordinatesLat, $FromCoordinatesLon, $ToCoordinatesLat, $ToCoordinatesLon, $Reason, $StartTime, $StopTime, $Delay, $IncidentType, $Distance, $UpdateTime, $PolyLine
+            htmlspecialchars($road),
+            htmlspecialchars($fromPlace),
+            htmlspecialchars($toPlace),
+            htmlspecialchars($fromCoordinatesLat),
+            htmlspecialchars($fromCoordinatesLon),
+            htmlspecialchars($toCoordinatesLat),
+            htmlspecialchars($toCoordinatesLon),
+            htmlspecialchars($reason),
+            htmlspecialchars($startTime),
+            htmlspecialchars($stopTime),
+            htmlspecialchars($delay),
+            htmlspecialchars($incidentType),
+            htmlspecialchars($distance),
+            htmlspecialchars($updateTime),
+            htmlspecialchars($polyLine)
         ];
 
         $DB->insertData($query, $params);
-
     }
 
     // Get incident by update time
-    public function getIncidentByUpdateTime($UpdateTime): false|array
+    public function getIncidentByUpdateTime(string $updateTime): false|array
     {
         $DB = new DB();
         $query = "SELECT * FROM incidents WHERE UpdateTime = ?";
-        $params = [$UpdateTime];
+        $params = [htmlspecialchars($updateTime)];
 
         return $DB->receiveData($query, $params);
     }
 
-    // GET array list with update times of the incident data
+    // Get array list with update times of the incident data
     public function getUpdateTimeList(): false|array
     {
         $DB = new DB();
@@ -42,7 +70,7 @@ class IncidentsModel
         return $DB->receiveData($query);
     }
 
-    // GET the latest update time
+    // Get the latest update time
     public function getLastUpdateTime(): string|null
     {
         $DB = new DB();
@@ -56,5 +84,4 @@ class IncidentsModel
             return null;
         }
     }
-
 }

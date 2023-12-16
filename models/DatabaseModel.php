@@ -63,7 +63,7 @@ class DB
     }
 
     // receive data query
-    function receiveData($sql, $data = null): false|array
+    function receiveData(string $sql, array $data = null): false|array
     {
         $this->stmt = $this->pdo->prepare($sql);
         $this->stmt->execute($data);
@@ -71,7 +71,7 @@ class DB
     }
 
     // insert data query
-    function insertData($sql, $data = null): void
+    function insertData(string $sql, array $data = null): void
     {
         $this->stmt = $this->pdo->prepare($sql);
         $this->stmt->execute($data);
