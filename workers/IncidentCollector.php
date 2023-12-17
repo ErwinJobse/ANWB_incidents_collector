@@ -14,7 +14,7 @@ class IncidentCollector
      *
      * @return void
      */
-    function update()
+    function update(): void
     {
         include(__ROOT__ . '/config/setup.php');
 
@@ -94,7 +94,7 @@ class IncidentCollector
      *
      * @return string|null Returns the formatted date and time or null if empty
      */
-    private function convertTimeFormat($time)
+    private function convertTimeFormat($time): ?string
     {
         //checks if not empty
         if (!$time == "") {
