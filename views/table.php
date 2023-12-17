@@ -9,43 +9,39 @@
     <script src="../JS/table.js"></script>
 </head>
 <body>
-<h1>ANWB incidents collector</h1>
+    <h1>ANWB incidents collector</h1>
 
-<a id="mapLink" href="index.php?map=latest">View on map</a>
+    <a id="mapLink" href="index.php?map=latest">View on map</a>
 
-<h1>Incidents Table</h1>
+    <h1>Incidents Table</h1>
 
-<label for="updateTimeSlider">Change update time</label>
-<input type="range" id="updateTimeSlider" min="0" max="100" step="1" value="">
-<p id="updateTimeView"></p>
+    <label for="updateTimeSlider">Change update time</label>
+    <input type="range" id="updateTimeSlider" min="0" max="100" step="1" value="">
+    <p id="updateTimeView"></p>
 
-<table id="incidentsTable">
-    <thead>
-    <tr>
-        <th>Incident Number</th>
-        <th>Road</th>
-        <th>From Place</th>
-        <th>To Place</th>
-        <th>From Coordinates latitude</th>
-        <th>From Coordinates longitude</th>
-        <th>To Coordinates latitude</th>
-        <th>To Coordinates longitude</th>
-        <th>Reason</th>
-        <th>Start Time</th>
-        <th>Stop Time</th>
-        <th>Delay in seconds</th>
-        <th>Incident Type</th>
-        <th>Distance</th>
-        <th>Update Time</th>
-        <th>Polyline</th>
-    </tr>
-    </thead>
-    <tbody></tbody>
-</table>
-<script>
-
-</script>
-
+    <table id="incidentsTable">
+        <thead>
+        <tr>
+            <th>Incident Number</th>
+            <th>Road</th>
+            <th>From Place</th>
+            <th>To Place</th>
+            <th>From Coordinates latitude</th>
+            <th>From Coordinates longitude</th>
+            <th>To Coordinates latitude</th>
+            <th>To Coordinates longitude</th>
+            <th>Reason</th>
+            <th>Start Time</th>
+            <th>Stop Time</th>
+            <th>Delay in seconds</th>
+            <th>Incident Type</th>
+            <th>Distance</th>
+            <th>Update Time</th>
+            <th>Polyline</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 
 </body>
 </html>
