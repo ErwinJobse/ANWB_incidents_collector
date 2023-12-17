@@ -27,14 +27,14 @@ class DB
         $this->dbHost = $GLOBALS['databaseHost'];
         $this->dbName = $GLOBALS['databaseName'];
         $this->dbCharset = $GLOBALS['databaseCharset'];
-        $this->dbUser = $GLOBALS['datebaseUsername'];
-        $this->dbPassword = $GLOBALS['datebasePassword'];
+        $this->dbUser = $GLOBALS['databaseUsername'];
+        $this->dbPassword = $GLOBALS['databasePassword'];
 
         $this->connect();
     }
 
     // Connect to the database
-    private function connect()
+    private function connect(): void
     {
         try {
             $this->pdo = new PDO(

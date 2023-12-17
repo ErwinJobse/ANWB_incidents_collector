@@ -13,6 +13,7 @@ class IncidentCollector
      * Adds new incidents
      *
      * @return void
+     * @throws Exception
      */
     function update(): void
     {
@@ -93,6 +94,7 @@ class IncidentCollector
      * @param string $time The date and time to convert.
      *
      * @return string|null Returns the formatted date and time or null if empty
+     * @throws Exception
      */
     private function convertTimeFormat($time): ?string
     {
