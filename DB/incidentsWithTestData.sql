@@ -40,7 +40,7 @@ CREATE TABLE `incidents` (
   `StartTime` datetime DEFAULT NULL,
   `StopTime` datetime DEFAULT NULL,
   `Delay` int(10) DEFAULT NULL,
-  `IncidentType` varchar(100) DEFAULT NULL,
+  `IncidentType` varchar(10) DEFAULT NULL,
   `Distance` int(10) DEFAULT NULL,
   `UpdateTime` datetime DEFAULT NULL,
   `Polyline` longtext DEFAULT NULL

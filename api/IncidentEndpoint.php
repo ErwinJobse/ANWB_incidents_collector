@@ -38,11 +38,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $result = null;
     }
 
+} else {
+    $result = null;
 }
 
 //Return results
 echo(json_encode($result));
 
 
-?>
+
 
