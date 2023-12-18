@@ -24,7 +24,7 @@ class IncidentController
      * @param string|null $stopTime
      * @param int|null    $delay
      * @param string|null $incidentType
-     * @param float|null  $distance
+     * @param int|null  $distance
      * @param string|null $updateTime
      * @param string|null $polyline
      *

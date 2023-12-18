@@ -14,16 +14,16 @@ class IncidentsModel
      * @param string $road
      * @param string $fromPlace
      * @param string $toPlace
-     * @param float  $fromCoordinatesLat
-     * @param float  $fromCoordinatesLon
-     * @param float  $toCoordinatesLat
-     * @param float  $toCoordinatesLon
+     * @param float $fromCoordinatesLat
+     * @param float $fromCoordinatesLon
+     * @param float $toCoordinatesLat
+     * @param float $toCoordinatesLon
      * @param string $reason
      * @param string $startTime
      * @param string $stopTime
-     * @param int    $delay
+     * @param int $delay
      * @param string $incidentType
-     * @param float  $distance
+     * @param int $distance
      * @param string $updateTime
      * @param string $polyLine
      *
@@ -42,7 +42,7 @@ class IncidentsModel
         string $stopTime,
         int $delay,
         string $incidentType,
-        float $distance,
+        int $distance,
         string $updateTime,
         string $polyLine
     ): void {
@@ -78,7 +78,7 @@ class IncidentsModel
      *
      * @return false|array
      */
-    public function getIncidentByUpdateTime(string $updateTime): false|array
+    public function getIncidentByUpdateTime(string $updateTime): ?array
     {
         $DB = new DB();
         $query = "SELECT * FROM incidents WHERE UpdateTime = ?";
@@ -92,7 +92,7 @@ class IncidentsModel
      *
      * @return false|array
      */
-    public function getUpdateTimeList(): false|array
+    public function getUpdateTimeList(): ?array
     {
         $DB = new DB();
         $query = "SELECT DISTINCT updatetime FROM incidents GROUP BY updatetime DESC";
@@ -105,7 +105,7 @@ class IncidentsModel
      *
      * @return string|null
      */
-    public function getLastUpdateTime(): string|null
+    public function getLastUpdateTime(): ?string
     {
         $DB = new DB();
         $query = "SELECT UpdateTime FROM incidents ORDER BY IncidentNumber DESC LIMIT 1";

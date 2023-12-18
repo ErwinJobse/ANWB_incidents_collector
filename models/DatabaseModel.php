@@ -21,7 +21,7 @@ class DB
     private $stmt = null;
 
 
-    function __construct()
+    public function __construct()
     {
         // Set database configuration from external setup
         $this->dbHost = $GLOBALS['databaseHost'];
@@ -53,7 +53,7 @@ class DB
     }
 
     // Close the connection
-    function __destruct()
+    public function __destruct()
     {
         if ($this->stmt !== null) {
             $this->stmt = null;
@@ -71,7 +71,7 @@ class DB
      *
      * @return false|array Returns the result set as an associative array.
      */
-    function receiveData(string $sql, array $data = null): false|array
+    public function receiveData(string $sql, array $data = null): false|array
     {
         $this->stmt = $this->pdo->prepare($sql);
         $this->stmt->execute($data);
@@ -86,7 +86,7 @@ class DB
      *
      * @return void
      */
-    function insertData(string $sql, array $data): void
+    public function insertData(string $sql, array $data): void
     {
         $this->stmt = $this->pdo->prepare($sql);
         $this->stmt->execute($data);

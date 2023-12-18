@@ -15,7 +15,7 @@ class IncidentCollector
      * @return void
      * @throws Exception
      */
-    function update(): void
+    public function update(): void
     {
         include(__ROOT__ . '/config/setup.php');
 
